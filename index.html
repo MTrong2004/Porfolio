@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio Vẽ - Timeline</title>
+  <meta name="description" content="Portfolio các tác phẩm vẽ theo dòng thời gian" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <header class="site-header" id="top">
+  <div class="scroll-progress"><div id="scrollProgressBar"></div></div>
+  <div class="container header-inner">
+      <div class="brand">
+        <span class="logo-circle">🎨</span>
+        <h1>Hành Trình Vẽ</h1>
+      </div>
+      <nav class="main-nav" aria-label="Điều hướng chính">
+        <ul>
+      <li><a href="#gioithieu" data-spy>Giới thiệu</a></li>
+      <li><a href="#timeline" data-spy>Timeline</a></li>
+      <li><a href="#boSuuTap" data-spy>Bộ sưu tập</a></li>
+      <li><a href="#lienHe" data-spy>Liên hệ</a></li>
+        </ul>
+      </nav>
+      <button class="theme-toggle" id="themeToggle" aria-label="Chuyển giao diện sáng/tối">🌓</button>
+  <button class="theme-toggle" id="perfToggle" aria-label="Bật/Tắt chế độ hiệu năng" title="Chế độ hiệu năng">⚡</button>
+    </div>
+  </header>
+
+  <main>
+    <section id="gioithieu" class="section intro">
+      <div class="container intro-grid">
+        <div class="intro-text">
+          <h2>Xin chào!</h2>
+          <p>Đây là hành trình phát triển kỹ năng vẽ của mình qua từng mốc thời gian. Mỗi tác phẩm phản ánh một bài học mới, một kỹ thuật mình đã thử nghiệm hoặc một cảm hứng đặc biệt.</p>
+          <p>Cuộn xuống để xem tiến bộ của mình qua các giai đoạn nhé!</p>
+          <a class="btn primary" href="#timeline">Xem Timeline ↓</a>
+        </div>
+        <div class="intro-hero">
+          <div class="hero-art" aria-hidden="true">
+            <div class="hero-mosaic" id="heroMosaic" aria-hidden="true"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="timeline" class="section timeline-section">
+      <div class="container">
+        <h2>Dòng thời gian tác phẩm</h2>
+        <p class="section-desc">Chuỗi tác phẩm theo thứ tự thời gian. Bạn có thể tìm nhanh hoặc đổi chiều sắp xếp.</p>
+        <div class="filters">
+          <div class="filter-group">
+            <label for="searchInput" class="visually-hidden">Tìm kiếm</label>
+            <input id="searchInput" type="search" placeholder="Tìm theo tiêu đề..." />
+          </div>
+          <div class="filter-group sort-group">
+            <label for="sortSelect">Sắp xếp:</label>
+            <select id="sortSelect">
+              <option value="newest">Mới nhất trước</option>
+              <option value="oldest">Cũ nhất trước</option>
+            </select>
+          </div>
+        </div>
+
+        <ol class="timeline" id="timelineList" aria-live="polite">
+          <!-- Các item sẽ được inject bởi JS -->
+        </ol>
+  <div id="kyNav" class="ky-nav" aria-label="Đi tới Kỳ"></div>
+      </div>
+    </section>
+
+    <section id="boSuuTap" class="section gallery-section">
+      <div class="container">
+        <h2>Bộ sưu tập nhanh</h2>
+        <div class="gallery-grid" id="galleryGrid" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <section id="lienHe" class="section contact-section">
+      <div class="container contact-inner">
+        <h2>Liên hệ</h2>
+        <p>Nếu bạn muốn góp ý hoặc hợp tác, hãy để lại lời nhắn:</p>
+        <form id="contactForm" class="contact-form" novalidate>
+          <div class="form-field">
+            <label for="name">Tên</label>
+            <input id="name" name="name" required minlength="2" />
+            <span class="error" data-for="name"></span>
+          </div>
+          <div class="form-field">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" required />
+            <span class="error" data-for="email"></span>
+          </div>
+          <div class="form-field">
+            <label for="message">Lời nhắn</label>
+            <textarea id="message" name="message" rows="4" required minlength="5"></textarea>
+            <span class="error" data-for="message"></span>
+          </div>
+          <button type="submit" class="btn primary">Gửi</button>
+          <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; <span id="year"></span> Hành Trình Vẽ. Made with ♥.</p>
+      <a href="#top" class="back-to-top" aria-label="Lên đầu trang">↑</a>
+    </div>
+  </footer>
+
+  <template id="timelineItemTemplate">
+    <li class="timeline-item" data-style="">
+      <div class="time"><time></time></div>
+      <div class="content">
+        <figure>
+          <div class="img-wrapper"><img loading="lazy" alt="" /></div>
+          <figcaption class="caption"></figcaption>
+        </figure>
+        <h3 class="title"></h3>
+        <p class="desc"></p>
+        <ul class="tags"></ul>
+      </div>
+    </li>
+  </template>
+
+  <template id="galleryItemTemplate">
+    <div class="gallery-item" data-style="">
+      <figure>
+        <div class="img-wrapper"><img loading="lazy" alt="" /></div>
+        <figcaption class="caption"></figcaption>
+      </figure>
+    </div>
+  </template>
+
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
