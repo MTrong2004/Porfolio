@@ -5,12 +5,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Portfolio Vẽ - Timeline</title>
   <meta name="description" content="Portfolio các tác phẩm vẽ theo dòng thời gian" />
+  <meta name="theme-color" content="#6366f1" />
+  <!-- Ngăn cache trình duyệt cơ bản để luôn lấy bản mới (dev) -->
+  <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+  <meta property="og:title" content="Hành Trình Vẽ" />
+  <meta property="og:description" content="Theo dõi hành trình phát triển kỹ năng vẽ qua dòng thời gian." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="" />
+  <meta property="og:image" content="assets/images/og-image.png" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="icon" type="image/png" href="assets/images/favicon.png" />
+  <link rel="canonical" href="" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body>
+  <a href="#gioithieu" class="skip-link">Bỏ qua đến nội dung</a>
   <header class="site-header" id="top">
   <div class="scroll-progress"><div id="scrollProgressBar"></div></div>
   <div class="container header-inner">
@@ -18,16 +32,16 @@
         <span class="logo-circle">🎨</span>
         <h1>Hành Trình Vẽ</h1>
       </div>
+      <button class="nav-toggle" id="navToggle" aria-label="Mở menu" aria-expanded="false" aria-controls="primaryNav">☰</button>
       <nav class="main-nav" aria-label="Điều hướng chính">
-        <ul>
+        <ul id="primaryNav">
       <li><a href="#gioithieu" data-spy>Giới thiệu</a></li>
-      <li><a href="#timeline" data-spy>Timeline</a></li>
-      <li><a href="#boSuuTap" data-spy>Bộ sưu tập</a></li>
+  <li><a href="#timeline" data-spy>Timeline</a></li>
       <li><a href="#lienHe" data-spy>Liên hệ</a></li>
         </ul>
       </nav>
       <button class="theme-toggle" id="themeToggle" aria-label="Chuyển giao diện sáng/tối">🌓</button>
-  <button class="theme-toggle" id="perfToggle" aria-label="Bật/Tắt chế độ hiệu năng" title="Chế độ hiệu năng">⚡</button>
+  <button class="theme-toggle admin-only" id="exportFeatured" aria-label="Xuất danh sách ảnh tiêu biểu" title="Xuất ảnh tiêu biểu">⬇</button>
     </div>
   </header>
 
@@ -73,12 +87,6 @@
       </div>
     </section>
 
-    <section id="boSuuTap" class="section gallery-section">
-      <div class="container">
-        <h2>Bộ sưu tập nhanh</h2>
-        <div class="gallery-grid" id="galleryGrid" aria-live="polite"></div>
-      </div>
-    </section>
 
     <section id="lienHe" class="section contact-section">
       <div class="container contact-inner">
@@ -129,16 +137,13 @@
     </li>
   </template>
 
-  <template id="galleryItemTemplate">
-    <div class="gallery-item" data-style="">
-      <figure>
-        <div class="img-wrapper"><img loading="lazy" alt="" /></div>
-        <figcaption class="caption"></figcaption>
-      </figure>
-    </div>
-  </template>
+  <!-- Gallery removed -->
 
   <script src="assets/js/data.js"></script>
+  <script src="assets/js/featured.js"></script>
+  <script src="assets/js/courseIndex.js"></script>
+  <!-- Dev auto-refresh for new images (polls data.js). Remove if not needed in production. -->
+  <script src="assets/js/autorefresh.js"></script>
   <script src="assets/js/main.js"></script>
 </body>
 </html>

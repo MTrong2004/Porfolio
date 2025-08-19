@@ -1,0 +1,12 @@
+{
+  "name": "Hành Trình Vẽ",
+  "short_name": "Vẽ",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#0e0f14",
+  "theme_color": "#6366f1",
+  "lang": "vi",
+  "icons": [
+    {"src": "assets/images/favicon.png", "sizes": "64x64", "type": "image/png"}
+  ]
+}

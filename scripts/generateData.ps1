@@ -18,7 +18,8 @@
 param(
   [switch]$Descending,
   [switch]$KeepOldIds,
-  [switch]$TitleFromDir
+  [switch]$TitleFromDir,
+  [switch]$MatchByName  # Giữ nguyên id nếu file được di chuyển (so khớp theo tên file duy nhất)
 )
 
 $ErrorActionPreference = 'Stop'
@@ -62,6 +63,7 @@ if(Test-Path $folderDescFile){
 
 # Đọc data.js hiện tại để giữ id nếu cần
 $oldMap = @{}
+${filenameIdMap} = @{}
 if($KeepOldIds -and (Test-Path $dataFile)){
   $raw = Get-Content $dataFile -Raw
   $regex = [regex]"\{[^{}]*?id:\s*(\d+)[^{}]*?img:\s*'(assets\/images\/[^']+)'[^{}]*?\}"
@@ -69,6 +71,13 @@ if($KeepOldIds -and (Test-Path $dataFile)){
     $id = [int]$m.Groups[1].Value
     $imgPath = $m.Groups[2].Value
     if(-not $oldMap.ContainsKey($imgPath)){ $oldMap[$imgPath] = $id }
+    if($MatchByName){
+      $fname = [System.IO.Path]::GetFileName($imgPath)
+      if($fname){
+        if(-not ${filenameIdMap}.ContainsKey($fname)){ ${filenameIdMap}[$fname] = @($id) }
+        else { ${filenameIdMap}[$fname] += $id }
+      }
+    }
   }
 }
 
@@ -108,7 +117,18 @@ foreach($f in $files){
     if($keySpecific -and $folderDescMap.ContainsKey($keySpecific)){ $desc = $folderDescMap[$keySpecific] }
     elseif($keyTop -and $folderDescMap.ContainsKey($keyTop)){ $desc = $folderDescMap[$keyTop] }
   }
-  $id = if($KeepOldIds -and $oldMap.ContainsKey($rel)) { $oldMap[$rel] } else { $nextId; $nextId++ }
+  $id = $null
+  if($KeepOldIds){
+    if($oldMap.ContainsKey($rel)) { $id = $oldMap[$rel] }
+    elseif($MatchByName){
+      $fnameCur = [System.IO.Path]::GetFileName($rel)
+      if($fnameCur -and ${filenameIdMap}.ContainsKey($fnameCur)){
+        $ids = ${filenameIdMap}[$fnameCur]
+        if($ids.Count -eq 1){ $id = $ids[0] }
+      }
+    }
+  }
+  if(-not $id){ $id = $nextId; $nextId++ }
   $artworks += [pscustomobject]@{ id=$id; date=$date; img=$rel; title=$title; desc=$desc; tags=$tags }
 }
 

@@ -1,0 +1,14 @@
+{
+	"name": "porfolio-site",
+	"version": "1.0.0",
+	"private": true,
+	"description": "Static timeline portfolio (drawing journey)",
+	"scripts": {
+		"serve": "npx http-server . -c-1",
+		"watch-images": "npx chokidar \"assets/images/**/*.{png,jpg,jpeg,webp,gif}\" -c \"powershell -ExecutionPolicy Bypass -File scripts/generateData.ps1 -Descending\"",
+		"dev": "powershell -ExecutionPolicy Bypass -Command \"Start-Job { npm run watch-images }; npm run serve\""
+	},
+	"devDependencies": {
+		"chokidar-cli": "3.0.0"
+	}
+}

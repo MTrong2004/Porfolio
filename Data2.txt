@@ -1,0 +1,43 @@
+7	DRS102	Drawing - Form, Still-life	1
+8	SSL101c	Academic Skills for University Success	1
+9	DTG102	Visual Design Tools	1
+10	VCM202	Visual Communication	1
+11	DRP101	Drawing - Plaster Statue, Portrait	1
+12	PST202	Perspective	2
+13	SSG104	Communication and In-Group Working Skills	2
+14	IPD201	Icon & Pattern design	2
+15	AFA201m	Human Anatomy for Artis	2
+16	GDF201	Fundamental of Graphic Design	2
+17	SCC201	Science of colour	3
+18	JPD113	Elementary Japanese 1- A1.1	3
+19	ANS201	Idea & Script Development	3
+20	TPG203	Basic typography & Layout	3
+21	PFD201	Photography for Designer	3
+22	ANC301	Character Development	4
+23	TPG302	Typography & E-publication Design	4
+24	DTG303	Principles of Animation	4
+25	JPD123	Elementary Japanese 1-A1.2	4
+26	WDU202c	The UI/UX Design	4
+27	HOA102	Art History	5
+28	CAA201	Communications and advertising	5
+29	ANS301	Storyboarding	5
+30	ANO301	Visual development for digital design	5
+31	DTG304	Principles of Compositing	5
+32	ENW492c	Writing Research Papers	6
+33	OJT202	On the job training	6
+34	VNC104	Vietnamese Culture	7
+35	SDP201	Sound Production	7
+36	ANT401	Traditional Animation Principles	7
+37	AMR402	3D Character Design	7
+38	EXE101	Experiential Entrepreneurship 1	7
+39	EXE201	Experiential Entrepreneurship 2	8
+40	AET102c	Aesthetic	8
+41	ANA401	3D Character Animation	8
+42	MLN111	Philosophy of Marxism – Leninism	8
+43	HOD102	Design History	8
+44	IPR102	Intellectual Property Rights	8
+45	MLN122	Political economics of Marxism – Leninism	8
+46	HCM202	Ho Chi Minh Ideology	9
+47	MLN131	Scientific socialism	9
+48	VNR202	History of Vietnam Communist Party	9
+49	GDP491	Capstone Project	9
